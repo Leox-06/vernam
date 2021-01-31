@@ -9,9 +9,9 @@ go get github.com/Leox-06/vernam
 
 Function you can call
 ```
-# RandomKey('length of massage')
-# Encrypt('message', 'key')
-# Decrypt('encrypted message', 'key')
+* RandomKey('length of massage')
+* Encrypt('message', 'key')
+* Decrypt('encrypted message', 'key')
 ```
 
 ___
