@@ -14,12 +14,12 @@ package main
 import (
 	"fmt"
 
-  "https://github.com/Leox-06/vernam"
+	"https://github.com/Leox-06/vernam"
 )
 
 func main(){
-  msg := "message"
-  key := vernam.RandomKey(len(msg))
-  fmt.Println(vernam.Encrypt(msg, key))
+	msg := "message"
+	key := vernam.RandomKey(len(msg))
+	fmt.Println(vernam.Encrypt(msg, key))
 }
 ```
