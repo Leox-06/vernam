@@ -1,5 +1,21 @@
 package main
 
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+func randomKey(leng int) string {
+	rand.Seed(time.Now().UnixNano())
+	var char = []rune("abcdefghijklmnopqrstuvwxyz")
+	key := make([]rune, leng)
+	for i := range key {
+		key[i] = char[rand.Intn(len(char))]
+	}
+	return string(key)
+}
+
 func splitSting(msg string) []string {
 	var msgsplitted []string
 	for a := 0; a < len(msg); a++ {
@@ -46,7 +62,7 @@ func encrypt(msg string, key string) string {
 	var msgindex []int = lettersToIndex(splitSting(msg))
 	var keyindex []int = lettersToIndex(splitSting(key))
 	var msgcrypted []int
-	for a := 0; a < len(msgindex); a++ {
+	for a := range msg {
 		if msgindex[a]+keyindex[a] < 26 {
 			msgcrypted = append(msgcrypted, msgindex[a]+keyindex[a])
 		} else {
@@ -60,7 +76,7 @@ func decrypt(msg string, key string) string {
 	var msgindex []int = lettersToIndex(splitSting(msg))
 	var keyindex []int = lettersToIndex(splitSting(key))
 	var msgdecrypted []int
-	for a := 0; a < len(msg); a++ {
+	for a := range msg {
 		if msgindex[a]-keyindex[a] >= 0 {
 			msgdecrypted = append(msgdecrypted, msgindex[a]-keyindex[a])
 		} else {
@@ -71,5 +87,12 @@ func decrypt(msg string, key string) string {
 }
 
 func main() {
-
+	msg := "ciao"
+	key := randomKey(len(msg))
+	out := encrypt(msg, key)
+	fmt.Println("messaggio: ",msg)
+	fmt.Println("key: ", key)
+	fmt.Println("messaggio cryptato: ", out)
+	out = decrypt(out, key)
+	fmt.Println("messaggio decryptato: ", out)
 }
