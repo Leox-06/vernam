@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+//genera una chiave randomica
 func RandomKey(leng int) string {
 	rand.Seed(time.Now().UnixNano())
 	var char = []rune("abcdefghijklmnopqrstuvwxyz")
@@ -15,6 +16,7 @@ func RandomKey(leng int) string {
 	return string(key)
 }
 
+//separa una stringa in un array si stringhe
 func splitSting(msg string) []string {
 	var msgsplitted []string
 	for a := 0; a < len(msg); a++ {
@@ -23,6 +25,7 @@ func splitSting(msg string) []string {
 	return msgsplitted
 }
 
+//unisce un array di stringhe in una stringa
 func mergeString(msg []string) string {
 	var msgmerged string
 	for a := 0; a < len(msg); a++ {
@@ -31,6 +34,7 @@ func mergeString(msg []string) string {
 	return msgmerged
 }
 
+//trasforma il messaggio in numeri --> a=0, b=1, c=2, d=3...
 func lettersToIndex(msg []string) []int {
 	char := []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
 	var msgindex []int
@@ -44,6 +48,7 @@ func lettersToIndex(msg []string) []int {
 	return msgindex
 }
 
+// trasforma numeri nel messaggio --> 0=a, 1=b, 2=c, 3=c...
 func indexToLetters(index []int) []string {
 	char := []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
 	var indexvalue []string
@@ -57,6 +62,7 @@ func indexToLetters(index []int) []string {
 	return indexvalue
 }
 
+// cripta il messaggio attraverso una chiave
 func Encrypt(msg string, key string) string {
 	var msgindex []int = lettersToIndex(splitSting(msg))
 	var keyindex []int = lettersToIndex(splitSting(key))
@@ -71,6 +77,7 @@ func Encrypt(msg string, key string) string {
 	return mergeString(indexToLetters(msgcrypted))
 }
 
+// decripta il messaggio criptato attraverso la chiave
 func Decrypt(msg string, key string) string {
 	var msgindex []int = lettersToIndex(splitSting(msg))
 	var keyindex []int = lettersToIndex(splitSting(key))
