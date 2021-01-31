@@ -8,7 +8,7 @@ go get github.com/Leox-06/vernam
 ___
 Example usage:
 
-```
+```go
 package main
 
 import (
