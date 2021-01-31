@@ -1,12 +1,11 @@
-package main
+package vernam
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
 
-func randomKey(leng int) string {
+func RandomKey(leng int) string {
 	rand.Seed(time.Now().UnixNano())
 	var char = []rune("abcdefghijklmnopqrstuvwxyz")
 	key := make([]rune, leng)
@@ -58,7 +57,7 @@ func indexToLetters(index []int) []string {
 	return indexvalue
 }
 
-func encrypt(msg string, key string) string {
+func Encrypt(msg string, key string) string {
 	var msgindex []int = lettersToIndex(splitSting(msg))
 	var keyindex []int = lettersToIndex(splitSting(key))
 	var msgcrypted []int
@@ -72,7 +71,7 @@ func encrypt(msg string, key string) string {
 	return mergeString(indexToLetters(msgcrypted))
 }
 
-func decrypt(msg string, key string) string {
+func Decrypt(msg string, key string) string {
 	var msgindex []int = lettersToIndex(splitSting(msg))
 	var keyindex []int = lettersToIndex(splitSting(key))
 	var msgdecrypted []int
@@ -86,13 +85,3 @@ func decrypt(msg string, key string) string {
 	return mergeString(indexToLetters(msgdecrypted))
 }
 
-func main() {
-	msg := "ciao"
-	key := randomKey(len(msg))
-	out := encrypt(msg, key)
-	fmt.Println("messaggio: ",msg)
-	fmt.Println("key: ", key)
-	fmt.Println("messaggio cryptato: ", out)
-	out = decrypt(out, key)
-	fmt.Println("messaggio decryptato: ", out)
-}
