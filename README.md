@@ -1,10 +1,19 @@
 # vernam
-This small packet can encrypt a message through vernam's cipher. The message must be lowercase and without spaces
+This little package can encrypt and decrypt a message through vernam's cipher. The message must be lowercase and without spaces
 ___
 To install, in a terminal type:
+
 ```
 go get github.com/Leox-06/vernam
 ```
+
+Function you can call
+```
+# RandomKey('length of massage')
+# Encrypt('message', 'key')
+# Decrypt('encrypted message', 'key')
+```
+
 ___
 Example usage:
 
